@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    const API_BASE_URL = 'https://milestone-zomato-production.up.railway.app'; // Replace with actual Railway URL if different
+    
     const form = document.getElementById('recommendationForm');
     const resultsContainer = document.getElementById('resultsContainer');
     const emptyState = document.getElementById('emptyState');
@@ -6,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const locationInput = document.getElementById('locationInput');
 
     try {
-        const locResponse = await fetch('/locations');
+        const locResponse = await fetch(`${API_BASE_URL}/locations`);
         const locData = await locResponse.json();
         if (locData.status === 'success' && locData.data) {
             const defaultOption = '<option value="" disabled selected>Select Location</option>';
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadingState.classList.add('flex');
 
         try {
-            const response = await fetch('/recommend', {
+            const response = await fetch(`${API_BASE_URL}/recommend`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
