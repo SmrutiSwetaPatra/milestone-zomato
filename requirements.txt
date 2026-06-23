@@ -8,3 +8,5 @@ streamlit
 datasets
 pyarrow
 sqlalchemy
+python-dotenv
+aiofiles
