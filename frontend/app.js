@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const API_BASE_URL = 'https://milestone-zomato-production.up.railway.app'; // Replace with actual Railway URL if different
+    // Use relative paths on Railway/localhost, but absolute URL on Vercel
+    const API_BASE_URL = window.location.hostname.includes('vercel.app') 
+        ? 'https://milestone-zomato-production.up.railway.app' // IMPORTANT: You must replace this with your ACTUAL Railway URL for Vercel to work!
+        : '';
     
     const form = document.getElementById('recommendationForm');
     const resultsContainer = document.getElementById('resultsContainer');
